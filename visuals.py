@@ -68,7 +68,7 @@ def ModelComplexity(X, y):
         The learning and testing errors rates are then plotted. """
     
     # Create 10 cross-validation sets for training and testing
-    cv = ShuffleSplit(X.shape[0], n_iter = 10, test_size = 0.2, random_state = 0)
+    cv = ShuffleSplit(X.shape[0], n_iter = 10, test_size = 0.2, random_state = 1)
 
     # Vary the max_depth parameter from 1 to 10
     max_depth = np.arange(1,11)
@@ -93,9 +93,12 @@ def ModelComplexity(X, y):
     pl.fill_between(max_depth, test_mean - test_std, \
         test_mean + test_std, alpha = 0.15, color = 'g')
     
+    #print train_mean
+    #print test_mean
+
     # Visual aesthetics
     pl.legend(loc = 'lower right')
-    pl.xlabel('Maximum Depth')
+    pl.xlabel('Maximum Depths')
     pl.ylabel('Score')
     pl.ylim([-0.05,1.05])
     pl.show()
